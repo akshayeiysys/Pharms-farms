@@ -83,7 +83,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         <Announce>
           {TranslateString(
             478,
-            'Ticket purchases are final. Your CAKE cannot be returned to you after buying tickets.',
+            'Ticket purchases are final. Your PHARM cannot be returned to you after buying tickets.',
           )}
         </Announce>
         <Final>{TranslateString(460, `You will spend: ${cakeCosts(val)} CAKE`)}</Final>
