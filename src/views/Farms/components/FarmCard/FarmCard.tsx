@@ -79,6 +79,101 @@ const ExpandingWrapper = styled.div<{ expanded: boolean }>`
   overflow: hidden;
 `
 
+
+ // start table code
+
+ interface ItemProps{
+  isDisplyflex?: boolean;
+  // expanded?: boolean;
+}
+const RowCard = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  max-height: 100px;
+  border-radius: 10px;
+`;
+const RowCardFirst =styled.div`
+width:100%;
+background:rgb(250, 249, 250);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:10px 0px;
+`;
+const ChildCardFirst=styled.div`
+width:300px;
+display:flex;
+flex-direction:column;
+
+line-height:28px;
+`;
+
+const ChildCardSecond=styled.div<ItemProps>`
+width: 400px;
+padding: 20px;
+display:${props=> props.isDisplyflex ? 'flex': 'block'};
+justify-content:space-between;
+border-radius: 14px;
+border: 2px solid rgb(238, 234, 244);
+margin:0px 40px;
+}
+`;
+const ChildCardThird=styled.div`
+width:500px;
+border: 2px solid rgb(238, 234, 244);
+padding:20px;
+border-radius:14px;
+`;
+
+
+const ChildCardThirdFirst=styled.button`
+width: 100%;
+    padding: 14px;
+    border: none;
+    background: rgb(117, 223, 238);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 16px;
+    margin-top:10px;
+`;
+const ChildCard = styled.div`
+min-height: 100px;
+ width: 100%;
+display:flex;
+align-items:center;
+`;
+
+const ChildCardSecondSubFirst= styled.div`
+display:flex;
+flex-direction:column;
+line-height:16px;
+font-size:12px;
+color:rgb(117, 223, 238);
+
+`;
+const ChildCardSecondSubSecond = styled.button`
+padding: 10px 40px;
+    border-radius: 20px;
+    border: none;
+`;
+
+const ChildBorder = styled.div`
+border:1px solid rgb(238, 234, 244);
+width:100px;
+border-radius:20px;
+text-align:center;
+margin-top:10px;
+
+`;
+
+
+
+
+
+// end table code
+
 interface FarmCardProps {
   farm: FarmWithStakedValue
   removed: boolean
@@ -190,7 +285,95 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
         />
       </ExpandingWrapper>
     </FCard>
+
+    
+//   <div>
+//   <RowCard>
+//   <ChildCard style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+//   {farm.tokenSymbol === 'PHARM' && <StyledCardAccent />}
+//       <CardHeading
+//         lpLabel={lpLabel}
+//         multiplier={farm.multiplier}
+//         risk={risk}
+//         depositFee={farm.depositFeeBP}
+//         farmImage={farmImage}
+//         tokenSymbol={farm.tokenSymbol}
+//       />
+//  </ChildCard>
+
+//  <ChildCard>
+//  {!removed && (
+//         <Flex justifyContent='space-between' alignItems='center'>
+//           <Text>{TranslateString(352, 'APR')}:</Text>
+//           <Text bold style={{ display: 'flex', alignItems: 'center' }}>
+//             {farm.apy ? (
+//               <>
+//                 <ApyButton
+//                   lpLabel={lpLabel}
+//                   quoteTokenAdresses={quoteTokenAdresses}
+//                   quoteTokenSymbol={quoteTokenSymbol}
+//                   tokenAddresses={tokenAddresses}
+//                   cakePrice={cakePrice}
+//                   apy={farm.apy}
+//                 />
+//                 {farmAPY}%
+//               </>
+//             ) : (
+//               <Skeleton height={24} width={80} />
+//             )}
+//           </Text>
+//         </Flex>
+//       )}
+//  </ChildCard>
+//   <ChildCard>
+//   <Text>{TranslateString(318, 'Earn')}:</Text>
+//         <Text bold>{earnLabel}</Text>
+//    </ChildCard>
+//     <ChildCard>
+//     <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
+//         <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
+//    </ChildCard> 
+//    <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
+   
+//    <ExpandableSectionButton
+// onClick={() => setShowExpandableSection(!showExpandableSection)}
+// expanded={showExpandableSection}
+// />
+//    </RowCard>
+
+
+// <RowCardFirst>
+// <ChildCardFirst>
+
+// removed={removed}
+//           isTokenOnly={farm.isTokenOnly}
+//           bscScanAddress={
+//             farm.isTokenOnly ?
+//               `https://bscscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+//               :
+//               `https://bscscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
+//           }
+// </ChildCardFirst>
+// <ChildCardSecond isDisplyflex expanded={showExpandableSection}>
+// totalValueFormated={totalValueFormated}
+//           lpLabel={lpLabel}
+//           quoteTokenAdresses={quoteTokenAdresses}
+//           quoteTokenSymbol={quoteTokenSymbol}
+//           tokenAddresses={tokenAddresses}
+//         /{'>'}
+
+
+// </ChildCardSecond>
+
+// </RowCardFirst>
+
+// </div>
+
   )
+
+
+
+  
 }
 
 export default FarmCard

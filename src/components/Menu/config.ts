@@ -83,15 +83,15 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Github',
-        href: 'https://github.com/pharmswap/',
+        href: 'https://www.github.com/pharmswap/',
       },
       {
         label: 'Docs',
-        href: 'https://pharmswap.gitbook.io/pharm-swap/',
+        href: 'https://www.pharmswap.gitbook.io/',
       },
       {
         label: 'Blog',
-        href: 'https://pharmfinance.medium.com/',
+        href: 'https://pharmswap.medium.com/',
       },
     ],
   },

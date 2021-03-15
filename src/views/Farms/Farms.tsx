@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react'
+import styled from 'styled-components'
 import { Route, useRouteMatch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import BigNumber from 'bignumber.js'
@@ -15,6 +16,8 @@ import { QuoteToken } from 'config/constants/types'
 import useI18n from 'hooks/useI18n'
 import FarmTabButtons from './components/FarmTabButtons'
 import Divider from './components/Divider'
+
+
 
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 
