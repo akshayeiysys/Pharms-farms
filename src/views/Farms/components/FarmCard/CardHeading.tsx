@@ -18,6 +18,12 @@ const Wrapper = styled(Flex)`
   }
 `
 
+const HeadingWrapper = styled(Heading)`
+ @media only screen and (max-width:990px){
+   font-size:14px !important;
+ }
+`
+
 const MultiplierTag = styled(Tag)`
   margin-left: 4px;
 `

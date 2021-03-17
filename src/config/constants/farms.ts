@@ -87,12 +87,12 @@ const farms: FarmConfig[] = [
     risk: 2,
     lpSymbol: 'ETH-BNB LP',
     lpAddresses: {
-      97: '0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c',
+      97: '0xE66790075ad839978fEBa15D4d8bB2b415556a1D',
       56: '0x70d8929d04b60af4fb9b58713ebcf18765ade422',
     },
     tokenSymbol: 'ETH',
     tokenAddresses: {
-      97: '0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c',
+      97: '0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5',
       56: '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
     },
     quoteTokenSymbol: QuoteToken.BNB,
@@ -269,12 +269,12 @@ const farms: FarmConfig[] = [
     isTokenOnly: true,
     lpSymbol: 'ETH',
     lpAddresses: {
-      97: '0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c',
+      97: '0xE66790075ad839978fEBa15D4d8bB2b415556a1D',
       56: '0xd9a0d1f5e02de2403f68bb71a15f8847a854b494', // ETH-BUSD LP
     },
     tokenSymbol: 'ETH',
     tokenAddresses: {
-      97: '0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c',
+      97: '0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5',
       56: '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
     },
     quoteTokenSymbol: QuoteToken.BUSD,

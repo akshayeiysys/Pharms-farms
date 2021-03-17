@@ -38,56 +38,56 @@ const WinningNumbers: React.FC = () => {
             </Row>
             <RabbitRow>
               <RabbitBox>
-                <CardImageFirst>
-                  <Image src="/images/sign bunny 1@2x.png" alt="Number 1" width={200} height={150} responsive />
+                <CardImageFirst className="imgSize">
+                  <ImgSize src="/images/sign bunny 1@2x.png" alt="Number 1" width={200} height={380} responsive />
                 </CardImageFirst>
               </RabbitBox>
-              <RabbitBox>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 2@2x.png" alt="Number 2" width={200} height={150} responsive />
+              <RabbitBox >
+                <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
+                  <ImgSize src="/images/sign bunny 2@2x.png" alt="Number 2" width={200} height={380} responsive />
+                </CardImage>
+              </RabbitBox>
+              <RabbitBox >
+                <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
+                  <ImgSize src="/images/sign bunny 3@2x.png" alt="Number 3" width={200} height={380} responsive />
                 </CardImage>
               </RabbitBox>
               <RabbitBox>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 3@2x.png" alt="Number 3" width={200} height={150} responsive />
-                </CardImage>
-              </RabbitBox>
-              <RabbitBox>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 4@2x.png" alt="Number 4" width={200} height={150} responsive />
+                <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
+                  <ImgSize src="/images/sign bunny 4@2x.png" alt="Number 4" width={200} height={380} responsive />
                 </CardImage>
               </RabbitBox>
             </RabbitRow>
             <RabbitRowSmall>
               <RabbitBoxSmall>
-                <CardImageFirst>
+                <CardImageFirst className="imgSize">
                   <Image src="/images/sign bunny 1@2x.png" alt="Number 1" width={200} height={150} responsive />
                 </CardImageFirst>
               </RabbitBoxSmall>
-              <RabbitBoxSmall>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
+              <RabbitBoxSmall >
+                <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
                   <Image src="/images/sign bunny 2@2x.png" alt="Number 2" width={200} height={150} responsive />
                 </CardImage>
               </RabbitBoxSmall>
-              <RabbitBoxSmall>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
+              <RabbitBoxSmall >
+                <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
                   <Image src="/images/sign bunny 3@2x.png" alt="Number 3" width={200} height={150} responsive />
                 </CardImage>
               </RabbitBoxSmall>
               <RabbitBoxSmall>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
+                <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
                   <Image src="/images/sign bunny 4@2x.png" alt="Number 4" width={200} height={150} responsive />
                 </CardImage>
               </RabbitBoxSmall>
             </RabbitRowSmall>
-            <Column>
-              <RowNoPadding>
-                <CenteredTextWithPadding>{TranslateString(442, 'Tickets matching 4 numbers:')}</CenteredTextWithPadding>
+            <Column style={{marginTop:'-70px'}}>
+              <RowNoPadding >
+                <CenteredTextWithPadding >{TranslateString(442, 'Tickets matching 4 numbers:')}</CenteredTextWithPadding>
                 <CenteredTextWithPadding>
                   <strong>{MatchedNumber4}</strong>
                 </CenteredTextWithPadding>
               </RowNoPadding>
-              <RowNoPadding>
+              <RowNoPadding >
                 <CenteredTextWithPadding>{TranslateString(444, 'Tickets matching 3 numbers:')}</CenteredTextWithPadding>
                 <CenteredTextWithPadding>
                   <strong>{MatchedNumber3}</strong>
@@ -106,9 +106,15 @@ const WinningNumbers: React.FC = () => {
           </StyledCardContentInner>
         </CardBody>
       </Card>
-    </CardWrapper>
+    </CardWrapper> 
   )
 }
+
+const ImgSize= styled(Image)` 
+ 
+ top:-90px !important;
+ 
+`
 const Link = styled.a`
   margin-top: 1em;
   text-decoration: none;
@@ -151,7 +157,7 @@ const CardImage = styled.div`
 const CardImageFirst = styled.div`
   text-align: center;
   margin-left: -1.2em;
-
+height:auto;
   @media (max-width: 600) {
     margin-left: -0.2em;
   }
@@ -183,20 +189,31 @@ const CenteredTextWithPadding = styled.div`
 `
 
 const TicketNumberBox = styled.div`
-  padding: 10px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #54dade 0%, #24c7d6 76.22%);
-  color: white;
-  font-size: 20px;
-  font-weight: 900;
+  color: #000;
+  font-weight: 900px;
   margin: 10px;
   margin-bottom: 7px;
-  width: 40px;
+  width: 36px !important;
+  font-size: 10px;
+  position: relative;
+  right: -5px;
+  top: -26px;
+  transform: rotate(-16deg);
+  width: 20px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:26px;
+  z-index:999999;
+}
+
+
 
   @media (min-width: 768px) {
-    font-size: 40px;
-    margin: 20px;
-    width: 60px;
+    // font-size: 40px !important; */
+    margin: 32px;
+    // width: 35px;
   }
 `
 

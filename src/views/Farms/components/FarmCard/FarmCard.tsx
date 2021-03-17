@@ -236,8 +236,8 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
     {toggleCard?
     
       <FCard toggleCard={toggleCard}>
-        <div style={{width:'100%',justifyContent:'space-between',display:'flex'}}>
-        <div style={{width:'20%'}}>
+        <div style={{width:'100%',justifyContent:'space-between',display:'flex',alignItems:'center'}}>
+        <div style={{width:'30%'}}>
     {farm.tokenSymbol === 'PHARM' && <StyledCardAccent />}
     <CardHeading
       lpLabel={lpLabel}
@@ -248,7 +248,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
       tokenSymbol={farm.tokenSymbol}
     />
     </div>
-    <div style={{width:'20%'}}>
+    <div style={{width:'30%'}}>
     {!removed && (
       <Flex justifyContent='space-between' alignItems='center'>
         <Text>{TranslateString(352, 'APR')}:</Text>
@@ -284,7 +284,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
     <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
     
     </div>
-    <div style={{width:'20%'}}>
+    <div style={{width:'5%'}}>
     <ExpandableSectionButton
       onClick={() => setShowExpandableSection(!showExpandableSection)}
       expanded={showExpandableSection}
@@ -293,10 +293,10 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
     </div>
     </div>
     <div style={{width:'100%'}}>
-    <Divider />
-      <div style={{width:'50%'}}>
-      <ExpandingWrapper expanded={showExpandableSection}>
     
+      {/* <div style={{width:'50%'}}> */}
+      <ExpandingWrapper expanded={showExpandableSection}>
+      <Divider />
       <DetailsSection
         removed={removed}
         isTokenOnly={farm.isTokenOnly}
@@ -313,7 +313,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
         tokenAddresses={tokenAddresses}
       />
     </ExpandingWrapper> 
-      </div>
+      {/* </div> */}
     
     </div >
     
