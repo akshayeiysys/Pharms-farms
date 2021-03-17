@@ -27,7 +27,7 @@ const Hero = styled.div`
     background-position: left center, right center;
     height: 165px;
     padding-top: 0;
-    background-color:#75dfee;
+    background-color:rgb(31, 199, 212);
     border-radius:10px;
   }
 `

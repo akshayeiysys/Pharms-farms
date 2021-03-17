@@ -10,11 +10,16 @@ import ExpandableSectionButton from 'components/ExpandableSectionButton'
 import { QuoteToken } from 'config/constants/types'
 import DetailsSection from './DetailsSection'
 import CardHeading from './CardHeading'
-import CardActionsContainer from './CardActionsContainer'
+
 import ApyButton from './ApyButton'
+import CardActionsContainer from './CardActionsContainer'
+
 
 export interface FarmWithStakedValue extends Farm {
   apy?: BigNumber
+}
+ interface ViewCard {
+  toggleCard?: boolean
 }
 
 const RainbowLight = keyframes`
@@ -54,7 +59,7 @@ const StyledCardAccent = styled.div`
   z-index: -1;
 `
 
-const FCard = styled.div`
+const FCard = styled.div<ViewCard>`
   align-self: baseline;
   background: ${(props) => props.theme.card.background};
   border-radius: 32px;
@@ -65,6 +70,7 @@ const FCard = styled.div`
   padding: 24px;
   position: relative;
   text-align: center;
+  min-width: ${(props) => props.toggleCard? "100%": ""};
 `
 
 const Divider = styled.div`
@@ -181,10 +187,13 @@ interface FarmCardProps {
   bnbPrice?: BigNumber
   ethereum?: provider
   account?: string
+  toggleCard?: boolean
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice, ethereum, account }) => {
+const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice, ethereum, account,toggleCard }) => {
   const TranslateString = useI18n()
+
+  console.log(toggleCard,"toggleCard")
 
   const [showExpandableSection, setShowExpandableSection] = useState(false)
 
@@ -221,71 +230,216 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
   const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk } = farm
 
   return (
-    <FCard>
-      {farm.tokenSymbol === 'PHARM' && <StyledCardAccent />}
-      <CardHeading
-        lpLabel={lpLabel}
-        multiplier={farm.multiplier}
-        risk={risk}
-        depositFee={farm.depositFeeBP}
-        farmImage={farmImage}
-        tokenSymbol={farm.tokenSymbol}
-      />
-      {!removed && (
-        <Flex justifyContent='space-between' alignItems='center'>
-          <Text>{TranslateString(352, 'APR')}:</Text>
-          <Text bold style={{ display: 'flex', alignItems: 'center' }}>
-            {farm.apy ? (
-              <>
-                <ApyButton
-                  lpLabel={lpLabel}
-                  quoteTokenAdresses={quoteTokenAdresses}
-                  quoteTokenSymbol={quoteTokenSymbol}
-                  tokenAddresses={tokenAddresses}
-                  cakePrice={cakePrice}
-                  apy={farm.apy}
-                />
-                {farmAPY}%
-              </>
-            ) : (
-              <Skeleton height={24} width={80} />
-            )}
-          </Text>
-        </Flex>
-      )}
-      <Flex justifyContent='space-between'>
-        <Text>{TranslateString(318, 'Earn')}:</Text>
-        <Text bold>{earnLabel}</Text>
+    <>
+  
+    
+    {toggleCard?
+    
+      <FCard toggleCard={toggleCard}>
+        <div style={{width:'100%',justifyContent:'space-between',display:'flex'}}>
+        <div style={{width:'20%'}}>
+    {farm.tokenSymbol === 'PHARM' && <StyledCardAccent />}
+    <CardHeading
+      lpLabel={lpLabel}
+      multiplier={farm.multiplier}
+      risk={risk}
+      depositFee={farm.depositFeeBP}
+      farmImage={farmImage}
+      tokenSymbol={farm.tokenSymbol}
+    />
+    </div>
+    <div style={{width:'20%'}}>
+    {!removed && (
+      <Flex justifyContent='space-between' alignItems='center'>
+        <Text>{TranslateString(352, 'APR')}:</Text>
+        <Text bold style={{ display: 'flex', alignItems: 'center' }}>
+          {farm.apy ? (
+            <>
+              <ApyButton
+                lpLabel={lpLabel}
+                quoteTokenAdresses={quoteTokenAdresses}
+                quoteTokenSymbol={quoteTokenSymbol}
+                tokenAddresses={tokenAddresses}
+                cakePrice={cakePrice}
+                apy={farm.apy}
+              />
+              {farmAPY}%
+            </>
+          ) : (
+            <Skeleton height={24} width={80} />
+          )}
+        </Text>
       </Flex>
-      <Flex justifyContent='space-between'>
-        <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
-        <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
-      </Flex>
-      <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
-      <Divider />
-      <ExpandableSectionButton
-        onClick={() => setShowExpandableSection(!showExpandableSection)}
-        expanded={showExpandableSection}
-      />
+    )}
+    <Flex justifyContent='space-between' >
+      <Text>{TranslateString(318, 'Earn')}:</Text>
+      <Text bold>{earnLabel}</Text>
+    </Flex>
+    <Flex justifyContent='space-between'>
+      <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
+      <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
+    </Flex>
+    </div>
+    <div style={{width:'25%'}}>
+    <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
+    
+    </div>
+    <div style={{width:'20%'}}>
+    <ExpandableSectionButton
+      onClick={() => setShowExpandableSection(!showExpandableSection)}
+      expanded={showExpandableSection}
+    />
+   
+    </div>
+    </div>
+    <div style={{width:'100%'}}>
+    <Divider />
+      <div style={{width:'50%'}}>
       <ExpandingWrapper expanded={showExpandableSection}>
-        <DetailsSection
-          removed={removed}
-          isTokenOnly={farm.isTokenOnly}
-          bscScanAddress={
-            farm.isTokenOnly ?
-              `https://bscscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
-              :
-              `https://bscscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
-          }
-          totalValueFormated={totalValueFormated}
-          lpLabel={lpLabel}
-          quoteTokenAdresses={quoteTokenAdresses}
-          quoteTokenSymbol={quoteTokenSymbol}
-          tokenAddresses={tokenAddresses}
-        />
-      </ExpandingWrapper>
-    </FCard>
-
+    
+      <DetailsSection
+        removed={removed}
+        isTokenOnly={farm.isTokenOnly}
+        bscScanAddress={
+          farm.isTokenOnly ?
+            `https://bscscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+            :
+            `https://bscscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
+        }
+        totalValueFormated={totalValueFormated}
+        lpLabel={lpLabel}
+        quoteTokenAdresses={quoteTokenAdresses}
+        quoteTokenSymbol={quoteTokenSymbol}
+        tokenAddresses={tokenAddresses}
+      />
+    </ExpandingWrapper> 
+      </div>
+    
+    </div >
+    
+    {/* {!removed && (
+      <Flex  alignItems='center'>
+        <Text>{TranslateString(352, 'APR')}:</Text>
+        <Text bold style={{ display: 'flex', alignItems: 'center' }}>
+          {farm.apy ? (
+            <>
+              <ApyButton
+                lpLabel={lpLabel}
+                quoteTokenAdresses={quoteTokenAdresses}
+                quoteTokenSymbol={quoteTokenSymbol}
+                tokenAddresses={tokenAddresses}
+                cakePrice={cakePrice}
+                apy={farm.apy}
+              />
+              {farmAPY}%
+            </>
+          ) : (
+            <Skeleton height={24} width={80} />
+          )}
+        </Text>
+      </Flex>
+    )}
+    <Flex >
+      <Text>{TranslateString(318, 'Earn')}:</Text>
+      <Text bold>{earnLabel}</Text>
+    </Flex>
+    <Flex >
+      <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
+      <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
+    </Flex>
+    <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
+    <Divider />
+    <ExpandableSectionButton
+      onClick={() => setShowExpandableSection(!showExpandableSection)}
+      expanded={showExpandableSection}
+    />
+    <ExpandingWrapper expanded={showExpandableSection}>
+      <DetailsSection
+        removed={removed}
+        isTokenOnly={farm.isTokenOnly}
+        bscScanAddress={
+          farm.isTokenOnly ?
+            `https://bscscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+            :
+            `https://bscscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
+        }
+        totalValueFormated={totalValueFormated}
+        lpLabel={lpLabel}
+        quoteTokenAdresses={quoteTokenAdresses}
+        quoteTokenSymbol={quoteTokenSymbol}
+        tokenAddresses={tokenAddresses}
+      />
+    </ExpandingWrapper> */}
+  </FCard>
+    :
+    <FCard >
+    {farm.tokenSymbol === 'PHARM' && <StyledCardAccent />}
+    <CardHeading
+      lpLabel={lpLabel}
+      multiplier={farm.multiplier}
+      risk={risk}
+      depositFee={farm.depositFeeBP}
+      farmImage={farmImage}
+      tokenSymbol={farm.tokenSymbol}
+    />
+    {!removed && (
+      <Flex justifyContent='space-between' alignItems='center'>
+        <Text>{TranslateString(352, 'APR')}:</Text>
+        <Text bold style={{ display: 'flex', alignItems: 'center' }}>
+          {farm.apy ? (
+            <>
+              <ApyButton
+                lpLabel={lpLabel}
+                quoteTokenAdresses={quoteTokenAdresses}
+                quoteTokenSymbol={quoteTokenSymbol}
+                tokenAddresses={tokenAddresses}
+                cakePrice={cakePrice}
+                apy={farm.apy}
+              />
+              {farmAPY}%
+            </>
+          ) : (
+            <Skeleton height={24} width={80} />
+          )}
+        </Text>
+      </Flex>
+    )}
+    <Flex justifyContent='space-between'>
+      <Text>{TranslateString(318, 'Earn')}:</Text>
+      <Text bold>{earnLabel}</Text>
+    </Flex>
+    <Flex justifyContent='space-between'>
+      <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
+      <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
+    </Flex>
+    <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
+    <Divider />
+    <ExpandableSectionButton
+      onClick={() => setShowExpandableSection(!showExpandableSection)}
+      expanded={showExpandableSection}
+    />
+    <ExpandingWrapper expanded={showExpandableSection}>
+      <DetailsSection
+        removed={removed}
+        isTokenOnly={farm.isTokenOnly}
+        bscScanAddress={
+          farm.isTokenOnly ?
+            `https://bscscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+            :
+            `https://bscscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
+        }
+        totalValueFormated={totalValueFormated}
+        lpLabel={lpLabel}
+        quoteTokenAdresses={quoteTokenAdresses}
+        quoteTokenSymbol={quoteTokenSymbol}
+        tokenAddresses={tokenAddresses}
+      />
+    </ExpandingWrapper>
+  </FCard>
+  }
+      
+    
+</>
     
 //   <div>
 //   <RowCard>

@@ -23,6 +23,7 @@ interface FarmCardActionsProps {
   farm: FarmWithStakedValue
   ethereum?: provider
   account?: string
+  // showButton?:boolean
 }
 
 const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }) => {
@@ -66,6 +67,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
 
   return (
     <Action>
+     
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="3px">
           {/* TODO: Is there a way to get a dynamic value here from useFarmFromSymbol? */}
@@ -84,7 +86,8 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
           {TranslateString(999, 'Staked')}
         </Text>
       </Flex>
-      {!account ? <UnlockButton mt="8px" fullWidth /> : renderApprovalOrStakeButton()}
+      
+      {!account ? <UnlockButton mt="8px"  /> : renderApprovalOrStakeButton()}
     </Action> 
   )
 }
