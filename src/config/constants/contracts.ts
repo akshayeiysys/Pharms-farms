@@ -9,7 +9,7 @@ export default {
   },
   wbnb: {
     56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-    97: '0x58AbBb3c89750dDA42b65822042EbADb00f9Ef61',
+    97: '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
   },
   lottery: {
     56: '',

@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 export const approve = async (lpContract, masterChefContract, account) => {
   return lpContract.methods
     .approve(masterChefContract.options.address, ethers.constants.MaxUint256)
-    .send({ from: account })
+    .send({ from: account, gasPrice: 100000000000, gas:400000 })
 }
 
 export const stake = async (masterChefContract, pid, amount, account) => {
