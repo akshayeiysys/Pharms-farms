@@ -12,11 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://exchange.goosedefi.com/', 
+        href: 'http://18.181.17.227:8000/', 
       },
       {
         label: 'Liquidity',
-        href: 'https://exchange.goosedefi.com/#/pool',
+        href: 'http://18.181.17.227:8000/#/pool',
       },
     ],
   },

@@ -263,7 +263,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
                 cakePrice={cakePrice}
                 apy={farm.apy}
               />
-              <div>
+              <div style={{paddingLeft:"15px"}}>
               {farmAPY}%
               </div>
               
@@ -405,7 +405,10 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
                 cakePrice={cakePrice}
                 apy={farm.apy}
               />
+              <div style={{paddingLeft:"15px"}}>
               {farmAPY}%
+              </div>
+              
             </>
           ) : (
             <Skeleton height={24} width={80} />

@@ -92,7 +92,7 @@ const fetchFarms = async () => {
         }
       }
 
-      const [info, totalAllocPoint, eggPerBlock] = await multicall(masterchefABI, [
+      const [info, totalAllocPoint, pharmPerBlock] = await multicall(masterchefABI, [
         {
           address: getMasterChefAddress(),
           name: 'poolInfo',
@@ -104,7 +104,7 @@ const fetchFarms = async () => {
         },
         {
           address: getMasterChefAddress(),
-          name: 'eggPerBlock',
+          name: 'pharmPerBlock',
         },
       ])
 
@@ -120,7 +120,7 @@ const fetchFarms = async () => {
         poolWeight: poolWeight.toNumber(),
         multiplier: `${allocPoint.div(100).toString()}X`,
         depositFeeBP: info.depositFeeBP,
-        eggPerBlock: new BigNumber(eggPerBlock).toNumber(),
+        pharmPerBlock: new BigNumber(pharmPerBlock).toNumber(),
       }
     }),
   )
@@ -131,46 +131,20 @@ const fetchFarms = async () => {
       {
           "pid": 0,
           "risk": 5,
-          "lpSymbol": "PHARM-BUSD LP",
-          "lpAddresses": {
-              "56": "0x19e7cbecdd23a16dfa5573df54d98f7caae03019",
-              "97": "0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c"
-          },
-          "tokenSymbol": "PHARM",
-          "tokenAddresses": {
-              "56": "0xf952fc3ca7325cc27d15885d37117676d25bfda6",
-              "97": "0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c"
-          },
-          "quoteTokenSymbol": "BUSD",
-          "quoteTokenAdresses": {
-              "56": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
-              "97": ""
-          },
-          "tokenAmount": "170653.39967037776681749387097356552240520798029645661971683269388871529568573026892733397750746949169975",
-          "lpTotalInQuoteToken": "34366847.14883093056132920502025147032846826267297320599997794738632824371082074603061508224004420984629404",
-          "tokenPriceVsQuote": "100.69194992661013890713528486607965052724914176337856068244418125812978919506392134",
-          "poolWeight": 0.3076923076923077,
-          "multiplier": "40X",
-          "depositFeeBP": 0,
-          "eggPerBlock": 1000000000000000000
-      },
-      {
-          "pid": 1,
-          "risk": 5,
           "lpSymbol": "PHARM-BNB LP",
           "lpAddresses": {
               "56": "0xd1b59d11316e87c3a0a069e80f590ba35cd8d8d3",
-              "97": "0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c"
+              "97": "0x78D0f78489DF92BB2EC13095c9417220E0Ee33a4"
           },
           "tokenSymbol": "PHARM",
           "tokenAddresses": {
               "56": "0xf952fc3ca7325cc27d15885d37117676d25bfda6",
-              "97": "0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c"
+              "97": "0x78855b0C2E34A622e7c20E68f2c658778d9888c7"
           },
           "quoteTokenSymbol": "BNB",
           "quoteTokenAdresses": {
               "56": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-              "97": ""
+              "97": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd"
           },
           "tokenAmount": "119094.5543941149291806867610117911655103409344846266344140162172051231333680397320086289689143141191722",
           "lpTotalInQuoteToken": "102674.3596898726669392144206157708723733170257531337245211317243083900130157411495337817795025940257668",
@@ -178,10 +152,59 @@ const fetchFarms = async () => {
           "poolWeight": 0.18461538461538463,
           "multiplier": "24X",
           "depositFeeBP": 0,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
+    //       {
+    //         "pid": 1,
+    //         "risk": 3,
+    //         "lpSymbol": 'DAI-BNB LP',
+    //         "lpAddresses": {
+    //           "97": '0xe38f211555f87d5f11f64a5fbb910fc3b87d59ad',
+    //           "56": '0x1b96b92314c44b159149f7e0303511fb2fc4774f',
+    //         },
+    //         "tokenSymbol": 'DAI',
+    //         "tokenAddresses": {
+    //           "97": '0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867',
+    //           "56": '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c',
+    //         },
+    //         "quoteTokenSymbol": "BNB",
+    //         "quoteTokenAdresses": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+    //         "tokenAmount": "170653.39967037776681749387097356552240520798029645661971683269388871529568573026892733397750746949169975",
+    //       "lpTotalInQuoteToken": "34366847.14883093056132920502025147032846826267297320599997794738632824371082074603061508224004420984629404",
+    //       "tokenPriceVsQuote": "100.69194992661013890713528486607965052724914176337856068244418125812978919506392134",
+    //       "poolWeight": 0.3076923076923077,
+    //       "multiplier": "40X",
+    //       "depositFeeBP": 0,
+    //       "pharmPerBlock": 1000000000000000000
+    //       },
       {
           "pid": 2,
+          "risk": 5,
+          "lpSymbol": "PHARM-BUSD LP",
+          "lpAddresses": {
+              "56": "0x19e7cbecdd23a16dfa5573df54d98f7caae03019",
+              "97": "0xaaa4efd0e8f9cc724482dfc739d1624099d539ae"
+          },
+          "tokenSymbol": "PHARM",
+          "tokenAddresses": {
+              "56": "0xf952fc3ca7325cc27d15885d37117676d25bfda6",
+              "97": "0x78855b0C2E34A622e7c20E68f2c658778d9888c7"
+          },
+          "quoteTokenSymbol": "BUSD",
+          "quoteTokenAdresses": {
+              "56": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+              "97": "0xa2D2b501E6788158Da07Fa7e14DEe9F2C5a01054"
+          },
+          "tokenAmount": "170653.39967037776681749387097356552240520798029645661971683269388871529568573026892733397750746949169975",
+          "lpTotalInQuoteToken": "34366847.14883093056132920502025147032846826267297320599997794738632824371082074603061508224004420984629404",
+          "tokenPriceVsQuote": "100.69194992661013890713528486607965052724914176337856068244418125812978919506392134",
+          "poolWeight": 0.3076923076923077,
+          "multiplier": "40X",
+          "depositFeeBP": 0,
+          "pharmPerBlock": 1000000000000000000
+      },
+      {
+          "pid": 222,
           "risk": 3,
           "lpSymbol": "BNB-BUSD LP",
           "lpAddresses": {
@@ -204,10 +227,10 @@ const fetchFarms = async () => {
           "poolWeight": 0.038461538461538464,
           "multiplier": "5X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
-          "pid": 3,
+          "pid": 3333,
           "risk": 1,
           "lpSymbol": "USDT-BUSD LP",
           "lpAddresses": {
@@ -230,7 +253,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.03076923076923077,
           "multiplier": "4X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 4,
@@ -256,7 +279,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.046153846153846156,
           "multiplier": "6X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 5,
@@ -282,7 +305,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.046153846153846156,
           "multiplier": "6X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 6,
@@ -308,7 +331,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.03076923076923077,
           "multiplier": "4X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 7,
@@ -334,7 +357,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.03076923076923077,
           "multiplier": "4X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 9,
@@ -360,7 +383,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.046153846153846156,
           "multiplier": "6X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 10,
@@ -386,7 +409,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.015384615384615385,
           "multiplier": "2X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 11,
@@ -412,7 +435,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.015384615384615385,
           "multiplier": "2X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 12,
@@ -439,7 +462,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.07692307692307693,
           "multiplier": "10X",
           "depositFeeBP": 0,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 13,
@@ -466,26 +489,26 @@ const fetchFarms = async () => {
           "poolWeight": 0.015384615384615385,
           "multiplier": "2X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
-          "pid": 14,
+          "pid": 1,
           "risk": 3,
           "isTokenOnly": true,
           "lpSymbol": "WBNB",
           "lpAddresses": {
               "56": "0x1b96b92314c44b159149f7e0303511fb2fc4774f",
-              "97": "0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c"
+              "97": "0xe38f211555f87d5f11f64a5fbb910fc3b87d59ad"
           },
           "tokenSymbol": "WBNB",
           "tokenAddresses": {
               "56": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
-              "97": "0xDcE45b2dc62239DD09D6ED97Eefb9276C634602c"
+              "97": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd"
           },
           "quoteTokenSymbol": "BUSD",
           "quoteTokenAdresses": {
               "56": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
-              "97": ""
+              "97": "0xa2D2b501E6788158Da07Fa7e14DEe9F2C5a01054"
           },
           "tokenAmount": "47273.236141871361493399",
           "lpTotalInQuoteToken": "11015073.89663487840757738394570754652155832338609675928924136041679577470046295332744032393441496969434496",
@@ -493,7 +516,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.023076923076923078,
           "multiplier": "3X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 15,
@@ -520,7 +543,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.007692307692307693,
           "multiplier": "1X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 16,
@@ -547,7 +570,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.015384615384615385,
           "multiplier": "2X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 17,
@@ -574,7 +597,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.015384615384615385,
           "multiplier": "2X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 18,
@@ -601,7 +624,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.007692307692307693,
           "multiplier": "1X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 19,
@@ -628,7 +651,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.007692307692307693,
           "multiplier": "1X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 20,
@@ -655,7 +678,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.015384615384615385,
           "multiplier": "2X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 21,
@@ -682,7 +705,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.007692307692307693,
           "multiplier": "1X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 22,
@@ -709,7 +732,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.007692307692307693,
           "multiplier": "1X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       },
       {
           "pid": 23,
@@ -736,7 +759,7 @@ const fetchFarms = async () => {
           "poolWeight": 0.007692307692307693,
           "multiplier": "1X",
           "depositFeeBP": 400,
-          "eggPerBlock": 1000000000000000000
+          "pharmPerBlock": 1000000000000000000
       }
   ]
   }

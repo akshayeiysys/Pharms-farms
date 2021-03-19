@@ -16,9 +16,12 @@ export const fetchFarmUserAllowances = async (account: string) => {
   })
 
   const rawLpAllowances = await multicall(erc20ABI, calls)
+  
   const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
+    
     return new BigNumber(lpBalance).toJSON()
   })
+
   return parsedLpAllowances
 }
 
@@ -58,6 +61,7 @@ export const fetchFarmUserStakedBalances = async (account: string) => {
 }
 
 export const fetchFarmUserEarnings = async (account: string) => {
+  try{
   const masterChefAdress = getMasterChefAddress()
 
   const calls = farmsConfig.map((farm) => {
@@ -67,10 +71,17 @@ export const fetchFarmUserEarnings = async (account: string) => {
       params: [farm.pid, account],
     }
   })
-
+  console.log("callsssss: ", calls)
   const rawEarnings = await multicall(masterchefABI, calls)
+  console.log("raw earnings: ", rawEarnings)
   const parsedEarnings = rawEarnings.map((earnings) => {
     return new BigNumber(earnings).toJSON()
   })
   return parsedEarnings
+  }
+  
+  catch(err){
+    console.log("error in fetch farms: ", err)
+    return 1
+  }
 }
