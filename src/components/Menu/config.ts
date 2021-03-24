@@ -53,7 +53,7 @@ const config: MenuEntry[] = [
   {
     label: 'Launchpad',
     icon: 'GooseIcon',
-    href: '/launchpad',
+    href: '/launch',
   },
   {
     label: 'Info',

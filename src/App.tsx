@@ -18,7 +18,9 @@ const Lottery = lazy(() => import('./views/Lottery'))
 // const Pools = lazy(() => import('./views/Pools'))
 // const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
-// const Nft = lazy(() => import('./views/Nft'))
+const Nft = lazy(() => import('./views/Nft'))
+const Launch = lazy(() => import('./views/launchpad/components/launch'))
+const Flash = lazy(() => import('./views/Flash'))
 
 // This config is required for number formating
 BigNumber.config({
@@ -52,6 +54,9 @@ const App: React.FC = () => {
             <Route path="/nests">
               <Farms tokenMode/>
             </Route>
+            <Route path="/launch">
+              <Launch />
+            </Route>
             {/* <Route path="/pools"> */}
             {/*  <Pools /> */}
             {/* </Route> */}
@@ -61,9 +66,12 @@ const App: React.FC = () => {
             {/* <Route path="/ifo"> */}
             {/*  <Ifos /> */}
             {/* </Route> */}
-            {/* <Route path="/nft"> */}
-            {/*  <Nft /> */}
-            {/* </Route> */}
+            <Route path="/nft"> 
+             <Nft />
+            </Route>
+            <Route path="/flash"> 
+             <Flash />
+            </Route>
             {/* Redirect */}
             {/* <Route path="/staking"> */}
             {/*  <Redirect to="/pools" /> */}

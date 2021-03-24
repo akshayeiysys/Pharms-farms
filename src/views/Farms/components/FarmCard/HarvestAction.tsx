@@ -37,7 +37,7 @@ const customStyles = {
 const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const TranslateString = useI18n()
   const [pendingTx, setPendingTx] = useState(false)
-  const [modalIsOpen,setIsOpen] = React.useState(false);
+  // const [modalIsOpen,setIsOpen] = React.useState(false);
   const { onReward } = useHarvest(pid)
   const { onStake } = useStake(pid)
 
@@ -45,25 +45,25 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const displayBalance = rawEarningsBalance.toLocaleString()
   let subtitle;
 
-  const openModal = ()=> {
-    setIsOpen(true);
-  }
+  // const openModal = ()=> {
+  //   setIsOpen(true);
+  // }
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     // subtitle.style.color = '#f00';
   }
  
-  function closeModal(){
-    setIsOpen(false);
-  }
+  // function closeModal(){
+  //   setIsOpen(false);
+  // }
 
-  async function Ok(){
-    setIsOpen(false);
-    setPendingTx(true)
-    await onReward()
-    setPendingTx(false)
+  // async function Ok(){
+  //   setIsOpen(false);
+  //   setPendingTx(true)
+  //   await onReward()
+  //   setPendingTx(false)
     
-  }
+  // }
 
 
   return (
@@ -87,18 +87,18 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
           : null}
         <Button
           disabled={rawEarningsBalance === 0 || pendingTx}
-          onClick={openModal}
+          // onClick={openModal}
           
-          // onClick={async () => {
-          //   setPendingTx(true)
-          //   await onReward()
-          //   setPendingTx(false)
-          // }}
+          onClick={async () => {
+            setPendingTx(true)
+            await onReward()
+            setPendingTx(false)
+          }}
         >
           {TranslateString(999, 'Harvest')}
         </Button>
       </BalanceAndCompound>
-      <Modal
+      {/* <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
@@ -107,7 +107,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
         >
  
           
-          {/* <button type="button" onClick={closeModal}>X</button> */}
+          
           <div style={{fontSize:'22px',color:'rgb(117 223 238)',width:'550px',textAlign:'center',lineHeight:'35px',letterSpacing:'0.6px'}}>AS YOU ARE STILL IN 11 DAY THRESHOLD REMOVING TOKENS FROM POOL WILL BURN 25% OF STAKE</div>
           <form>
             <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:'20px'}}>
@@ -115,7 +115,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
             <button style={{background:'#49c6d8',border:'none',padding:'10px 30px',color:'#fff',marginRight:'15px',cursor:'pointer'}}type="button" onClick={Ok}>Ok</button>
             </div>
           </form>
-        </Modal>
+        </Modal> */}
     </Flex>
   )
 

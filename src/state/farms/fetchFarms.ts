@@ -129,16 +129,16 @@ const fetchFarms = async () => {
   }catch{
     return [
       {
-          "pid": 0,
+          "pid": 1,
           "risk": 5,
           "lpSymbol": "PHARM-BNB LP",
           "lpAddresses": {
-              "56": "0xd1b59d11316e87c3a0a069e80f590ba35cd8d8d3",
+              "56": "0xb1C35c1F15299ABCF9728c5e4349D24581AdEa36",
               "97": "0x78D0f78489DF92BB2EC13095c9417220E0Ee33a4"
           },
           "tokenSymbol": "PHARM",
           "tokenAddresses": {
-              "56": "0xf952fc3ca7325cc27d15885d37117676d25bfda6",
+              "56": "0x50dF85A6E3635B8A69b16978f31a888541f95D23",
               "97": "0x78855b0C2E34A622e7c20E68f2c658778d9888c7"
           },
           "quoteTokenSymbol": "BNB",
@@ -178,16 +178,16 @@ const fetchFarms = async () => {
     //       "pharmPerBlock": 1000000000000000000
     //       },
       {
-          "pid": 2,
+          "pid": 0,
           "risk": 5,
           "lpSymbol": "PHARM-BUSD LP",
           "lpAddresses": {
-              "56": "0x19e7cbecdd23a16dfa5573df54d98f7caae03019",
+              "56": "0x37948281522432ff12c98315e2c9819a6da7b686",
               "97": "0xaaa4efd0e8f9cc724482dfc739d1624099d539ae"
           },
           "tokenSymbol": "PHARM",
           "tokenAddresses": {
-              "56": "0xf952fc3ca7325cc27d15885d37117676d25bfda6",
+              "56": "0x50dF85A6E3635B8A69b16978f31a888541f95D23",
               "97": "0x78855b0C2E34A622e7c20E68f2c658778d9888c7"
           },
           "quoteTokenSymbol": "BUSD",
