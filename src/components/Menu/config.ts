@@ -12,11 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'http://18.181.17.227:8000/', 
+        href: 'http://exchange.pharmswap.finance/#/swap', 
       },
       {
         label: 'Liquidity',
-        href: 'http://18.181.17.227:8000/#/pool',
+        href: 'http://exchange.pharmswap.finance/#/pool',
       },
     ],
   },
