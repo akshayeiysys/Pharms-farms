@@ -87,7 +87,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'Docs',
-        href: 'https://pharmswap.gitbook.io/',
+        href: 'https://pharmswap.gitbook.io/pharmswap/',
       },
       {
         label: 'Blog',
