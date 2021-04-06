@@ -52,12 +52,13 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
     <Wrapper>
       <Flex justifyContent="space-between">
         <Text>{TranslateString(316, 'Stake')}:</Text>
-        <StyledLinkExternal href={
-          isTokenOnly ?
-            `http://18.181.17.227:8000/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
-            :
-          `http://18.181.17.227:8000/#/add/${liquidityUrlPathParts}`
-        }>
+        <StyledLinkExternal
+          href={
+            isTokenOnly
+              ? `http://18.181.17.227:8000/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+              : `http://18.181.17.227:8000/#/add/${liquidityUrlPathParts}`
+          }
+        >
           {lpLabel}
         </StyledLinkExternal>
       </Flex>

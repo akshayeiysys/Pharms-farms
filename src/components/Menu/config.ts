@@ -12,7 +12,7 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'http://exchange.pharmswap.finance/#/swap', 
+        href: 'http://exchange.pharmswap.finance/#/swap',
       },
       {
         label: 'Liquidity',
@@ -87,7 +87,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'Docs',
-        href: 'https://www.pharmswap.gitbook.io/',
+        href: 'https://pharmswap.gitbook.io/',
       },
       {
         label: 'Blog',
@@ -95,8 +95,7 @@ const config: MenuEntry[] = [
       },
     ],
   },
-  
-   
+
   // {
   //   label: 'Partnerships/IFO',
   //   icon: 'GooseIcon',

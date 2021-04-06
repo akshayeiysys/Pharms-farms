@@ -42,12 +42,12 @@ const WinningNumbers: React.FC = () => {
                   <ImgSize src="/images/sign bunny 1@2x.png" alt="Number 1" width={200} height={380} responsive />
                 </CardImageFirst>
               </RabbitBox>
-              <RabbitBox >
+              <RabbitBox>
                 <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
                   <ImgSize src="/images/sign bunny 2@2x.png" alt="Number 2" width={200} height={380} responsive />
                 </CardImage>
               </RabbitBox>
-              <RabbitBox >
+              <RabbitBox>
                 <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
                   <ImgSize src="/images/sign bunny 3@2x.png" alt="Number 3" width={200} height={380} responsive />
                 </CardImage>
@@ -64,12 +64,12 @@ const WinningNumbers: React.FC = () => {
                   <Image src="/images/sign bunny 1@2x.png" alt="Number 1" width={200} height={150} responsive />
                 </CardImageFirst>
               </RabbitBoxSmall>
-              <RabbitBoxSmall >
+              <RabbitBoxSmall>
                 <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
                   <Image src="/images/sign bunny 2@2x.png" alt="Number 2" width={200} height={150} responsive />
                 </CardImage>
               </RabbitBoxSmall>
-              <RabbitBoxSmall >
+              <RabbitBoxSmall>
                 <CardImage style={{ marginLeft: '-1.2em' }} className="imgSize">
                   <Image src="/images/sign bunny 3@2x.png" alt="Number 3" width={200} height={150} responsive />
                 </CardImage>
@@ -80,14 +80,14 @@ const WinningNumbers: React.FC = () => {
                 </CardImage>
               </RabbitBoxSmall>
             </RabbitRowSmall>
-            <Column style={{marginTop:'-70px'}}>
-              <RowNoPadding >
-                <CenteredTextWithPadding >{TranslateString(442, 'Tickets matching 4 numbers:')}</CenteredTextWithPadding>
+            <Column style={{ marginTop: '-70px' }}>
+              <RowNoPadding>
+                <CenteredTextWithPadding>{TranslateString(442, 'Tickets matching 4 numbers:')}</CenteredTextWithPadding>
                 <CenteredTextWithPadding>
                   <strong>{MatchedNumber4}</strong>
                 </CenteredTextWithPadding>
               </RowNoPadding>
-              <RowNoPadding >
+              <RowNoPadding>
                 <CenteredTextWithPadding>{TranslateString(444, 'Tickets matching 3 numbers:')}</CenteredTextWithPadding>
                 <CenteredTextWithPadding>
                   <strong>{MatchedNumber3}</strong>
@@ -100,20 +100,18 @@ const WinningNumbers: React.FC = () => {
                 </CenteredTextWithPadding>
               </RowNoPadding>
             </Column>
-            <Link href="https://api.pancakeswap.com/api/lottery?page=0&pageSize=25" target="_blank">
+            <Link href="https://api.pharmswap.com/api/lottery?page=0&pageSize=25" target="_blank">
               {TranslateString(448, 'Export recent winning numbers')}
             </Link>
           </StyledCardContentInner>
         </CardBody>
       </Card>
-    </CardWrapper> 
+    </CardWrapper>
   )
 }
 
-const ImgSize= styled(Image)` 
- 
- top:-90px !important;
- 
+const ImgSize = styled(Image)`
+  top: -90px !important;
 `
 const Link = styled.a`
   margin-top: 1em;
@@ -157,7 +155,7 @@ const CardImage = styled.div`
 const CardImageFirst = styled.div`
   text-align: center;
   margin-left: -1.2em;
-height:auto;
+  height: auto;
   @media (max-width: 600) {
     margin-left: -0.2em;
   }

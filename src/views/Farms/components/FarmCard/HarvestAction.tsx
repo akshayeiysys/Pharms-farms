@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Modal from 'react-modal';
+import Modal from 'react-modal'
 import BigNumber from 'bignumber.js'
 import { Button, Flex, Heading } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
@@ -20,20 +20,20 @@ const BalanceAndCompound = styled.div`
   flex-direction: column;
 `
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
-    background              : 'rgb(254 253 254)',
-    padding                 : '40px',
-    borderRadius        :'30px',
-    border:'2px solid #75dfee',
-    boxShadow:'-1px 2px 13px 0px #75dfee'
-  }
-};
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    background: 'rgb(254 253 254)',
+    padding: '40px',
+    borderRadius: '30px',
+    border: '2px solid #75dfee',
+    boxShadow: '-1px 2px 13px 0px #75dfee',
+  },
+}
 const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const TranslateString = useI18n()
   const [pendingTx, setPendingTx] = useState(false)
@@ -43,7 +43,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
 
   const rawEarningsBalance = getBalanceNumber(earnings)
   const displayBalance = rawEarningsBalance.toLocaleString()
-  let subtitle;
+  let subtitle
 
   // const openModal = ()=> {
   //   setIsOpen(true);
@@ -52,7 +52,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
     // references are now sync'd and can be accessed.
     // subtitle.style.color = '#f00';
   }
- 
+
   // function closeModal(){
   //   setIsOpen(false);
   // }
@@ -62,20 +62,19 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   //   setPendingTx(true)
   //   await onReward()
   //   setPendingTx(false)
-    
+
   // }
 
-
   return (
-    <Flex mb='8px' justifyContent='space-between' alignItems='center'>
+    <Flex mb="8px" justifyContent="space-between" alignItems="center">
       <Heading color={rawEarningsBalance === 0 ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
       <BalanceAndCompound>
-        {pid === 12 ?
+        {pid === 12 ? (
           <Button
             disabled={rawEarningsBalance === 0 || pendingTx}
-            size='sm'
-            variant='secondary'
-            marginBottom='15px'
+            size="sm"
+            variant="secondary"
+            marginBottom="15px"
             onClick={async () => {
               setPendingTx(true)
               await onStake(rawEarningsBalance.toString())
@@ -84,11 +83,11 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
           >
             {TranslateString(999, 'Compound')}
           </Button>
-          : null}
+        ) : null}
         <Button
           disabled={rawEarningsBalance === 0 || pendingTx}
           // onClick={openModal}
-          
+
           onClick={async () => {
             setPendingTx(true)
             await onReward()
@@ -118,8 +117,6 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
         </Modal> */}
     </Flex>
   )
-
 }
-
 
 export default HarvestAction

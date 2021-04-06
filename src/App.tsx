@@ -52,7 +52,7 @@ const App: React.FC = () => {
               <Farms />
             </Route>
             <Route path="/nests">
-              <Farms tokenMode/>
+              <Farms tokenMode />
             </Route>
             <Route path="/launch">
               <Launch />
@@ -60,17 +60,17 @@ const App: React.FC = () => {
             {/* <Route path="/pools"> */}
             {/*  <Pools /> */}
             {/* </Route> */}
-            <Route path="/lottery"> 
-             <Lottery />
-             </Route>
+            <Route path="/lottery">
+              <Lottery />
+            </Route>
             {/* <Route path="/ifo"> */}
             {/*  <Ifos /> */}
             {/* </Route> */}
-            <Route path="/nft"> 
-             <Nft />
+            <Route path="/nft">
+              <Nft />
             </Route>
-            <Route path="/flash"> 
-             <Flash />
+            <Route path="/flash">
+              <Flash />
             </Route>
             {/* Redirect */}
             {/* <Route path="/staking"> */}

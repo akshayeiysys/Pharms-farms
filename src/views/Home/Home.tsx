@@ -27,17 +27,16 @@ const Hero = styled.div`
     background-position: left center, right center;
     height: 165px;
     padding-top: 0;
-    background-color:rgb(31, 199, 212);
-    border-radius:10px;
+    background-color: rgb(31, 199, 212);
+    border-radius: 10px;
   }
 `
-
 
 const Cards = styled(BaseLayout)`
   align-items: stretch;
   justify-content: stretch;
   margin-bottom: 48px;
-  background-color:#d4d4d40a;
+  background-color: #d4d4d40a;
 
   & > div {
     grid-column: span 6;
@@ -72,7 +71,7 @@ const Home: React.FC = () => {
       <div>
         <Cards>
           <FarmStakingCard />
-          <TwitterCard/>
+          <TwitterCard />
           <CakeStats />
           <TotalValueLockedCard />
         </Cards>

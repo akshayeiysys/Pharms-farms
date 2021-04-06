@@ -54,14 +54,11 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
 
   return (
     <Modal title="ROI" onDismiss={onDismiss}>
-      
       <Description fontSize="12px" color="textSubtle">
-       
-          'AS YOU ARE STILL IN 11 DAY THRESHOLD REMOVING TOKENS FROM POOL WILL BURN 25% OF STAKE'.
-      
+        'AS YOU ARE STILL IN 11 DAY THRESHOLD REMOVING TOKENS FROM POOL WILL BURN 25% OF STAKE'.
       </Description>
-     <button>Cancel</button>
-     <button>Ok</button>
+      <button>Cancel</button>
+      <button>Ok</button>
     </Modal>
   )
 }

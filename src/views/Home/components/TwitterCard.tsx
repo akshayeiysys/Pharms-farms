@@ -13,8 +13,8 @@ import { useFarms } from '../../../state/hooks'
 const StyledTwitterCard = styled(Card)`
   margin-left: auto;
   margin-right: auto;
-  border-radius:10px;
-  background-color:#a6a6a62e;
+  border-radius: 10px;
+  background-color: #a6a6a62e;
 `
 
 const Row = styled.div`
@@ -37,12 +37,12 @@ const TwitterCard = () => {
         <Timeline
           dataSource={{
             sourceType: 'profile',
-            screenName: 'pharmswap'
+            screenName: 'pharmswap',
           }}
           options={{
             height: '300',
-            chrome: "noheader, nofooter",
-            width: "400"
+            chrome: 'noheader, nofooter',
+            width: '400',
           }}
         />
       </CardBody>

@@ -19,9 +19,9 @@ const Wrapper = styled(Flex)`
 `
 
 const HeadingWrapper = styled(Heading)`
- @media only screen and (max-width:990px){
-   font-size:14px !important;
- }
+  @media only screen and (max-width: 990px) {
+    font-size: 14px !important;
+  }
 `
 
 const MultiplierTag = styled(Tag)`
@@ -45,7 +45,7 @@ const CardHeading: React.FC<ExpandableSectionProps> = ({
           {depositFee === 0 ? <NoFeeTag /> : null}
           {/* {isCommunityFarm ? <CommunityTag /> : <CoreTag />} */}
           {/* <RiskTag risk={risk} /> */}
-          <MultiplierTag >{multiplier}</MultiplierTag>
+          <MultiplierTag>{multiplier}</MultiplierTag>
         </Flex>
       </Flex>
     </Wrapper>

@@ -17,18 +17,11 @@ import useI18n from 'hooks/useI18n'
 import FarmTabButtons from './components/FarmTabButtons'
 import Divider from './components/Divider'
 
-
-
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
-
 
 export interface FarmsProps {
   tokenMode?: boolean
 }
-
-
-
-
 
 const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const { path } = useRouteMatch()
@@ -37,8 +30,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const cakePrice = usePriceCakeBusd()
   const bnbPrice = usePriceBnbBusd()
   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
-  const { tokenMode } = farmsProps;
-
+  const { tokenMode } = farmsProps
 
   const dispatch = useDispatch()
   const { fastRefresh } = useRefresh()
@@ -68,21 +60,30 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         // if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
         //   return farm
         // }
-        const cakeRewardPerBlock = new BigNumber(farm.pharmPerBlock || 1).times(new BigNumber(farm.poolWeight)).div(new BigNumber(10).pow(18))
+        const cakeRewardPerBlock = new BigNumber(farm.pharmPerBlock || 1)
+          .times(new BigNumber(farm.poolWeight))
+          .div(new BigNumber(10).pow(18))
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
 
-        let apy = cakePrice.times(cakeRewardPerYear);
-
-        let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
+        let apy = cakePrice.times(cakeRewardPerYear)
+        console.log(apy.toNumber(), 'apy before')
+        let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0)
 
         if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-          totalValue = totalValue.times(bnbPrice);
+          totalValue = totalValue.times(bnbPrice)
         }
 
         if (totalValue.comparedTo(0) > 0) {
-          apy = apy.div(totalValue);
+          apy = apy.div(totalValue)
         }
 
+        console.log(
+          cakeRewardPerBlock.toNumber(),
+          cakeRewardPerYear.toNumber(),
+          apy.toNumber(),
+          totalValue.toNumber(),
+          'cakeRewardPerBlock,cakeRewardPerYear,apy,totalValue',
+        )
         return { ...farm, apy }
       })
       return farmsToDisplayWithAPY.map((farm) => (
@@ -101,49 +102,50 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
     [bnbPrice, account, cakePrice, ethereum, toggleCard],
   )
 
-  const ToggleView= (status:boolean)=>{
+  const ToggleView = (status: boolean) => {
     setToggle(status)
   }
 
   return (
     <Page>
       <Heading as="h1" size="lg" color="primary" mb="50px" style={{ textAlign: 'center' }}>
-        {
-          tokenMode ?
-            TranslateString(10002, 'Stake tokens to earn EGG')
-            :
-            TranslateString(320, 'Stake LP tokens to earn EGG')
-        }
+        {tokenMode
+          ? TranslateString(10002, 'Stake tokens to earn EGG')
+          : TranslateString(320, 'Stake LP tokens to earn EGG')}
       </Heading>
       <Heading as="h2" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
         {TranslateString(10000, 'Deposit Fee will be used to buyback EGG')}
       </Heading>
 
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '40px' }}>
+        <div style={{ position: 'relative', right: '80px' }}>
+          <button
+            type="button"
+            style={{ border: 'none', outline: '0px', cursor: 'pointer', background: 'transparent' }}
+            onClick={() => {
+              ToggleView(true)
+            }}
+          >
+            <img src="/images/egg/view-list-button.png" alt="table" />
+          </button>
 
-     
+          <button
+            type="button"
+            style={{ border: 'none', outline: '0px', marginLeft: '10px', cursor: 'pointer', background: 'transparent' }}
+            onClick={() => {
+              ToggleView(false)
+            }}
+          >
+            <img src="/images/egg/controlling-card.png" alt="Div" />
+          </button>
+        </div>
+        <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly} />
+      </div>
 
-     
-
-<div style={{display:'flex',alignItems:'center',justifyContent:'center',margin:'40px'}}>
-<div style={{position:'relative',right:'80px'}}>
-<button type="button" style={{border:'none',outline:'0px',cursor:'pointer',background: 'transparent'}} onClick={() => { ToggleView(true) }}>
-<img src="/images/egg/view-list-button.png"  alt="table" />
-</button>
-      
-<button type="button" style={{border:'none',outline:'0px',marginLeft:'10px',cursor:'pointer',background: 'transparent'}} onClick={() => { ToggleView(false) }}>
-<img src="/images/egg/controlling-card.png"  alt="Div" />
-</button>
-</div>
-<FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly} />
-</div>
-      
-      
       <div>
-
         <Divider />
-        
+
         <FlexLayout>
-          
           <Route exact path={`${path}`}>
             {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
           </Route>

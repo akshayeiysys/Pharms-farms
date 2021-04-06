@@ -12,8 +12,8 @@ import { useFarms, usePriceCakeBusd } from '../../../state/hooks'
 const StyledCakeStats = styled(Card)`
   margin-left: auto;
   margin-right: auto;
-  border-radius:10px;
-  background-color:#a6a6a62e;
+  border-radius: 10px;
+  background-color: #a6a6a62e;
 `
 
 const Row = styled.div`
@@ -28,15 +28,15 @@ const CakeStats = () => {
   const TranslateString = useI18n()
   const totalSupply = useTotalSupply()
   const burnedBalance = useBurnedBalance(getCakeAddress())
-  const farms = useFarms();
-  const pharmPrice = usePriceCakeBusd();
-  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0);
-  const cakeSupply = getBalanceNumber(circSupply);
-  const marketCap = pharmPrice.times(circSupply);
+  const farms = useFarms()
+  const pharmPrice = usePriceCakeBusd()
+  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0)
+  const cakeSupply = getBalanceNumber(circSupply)
+  const marketCap = pharmPrice.times(circSupply)
 
-  let pharmPerBlock = 0;
-  if(farms && farms[0] && farms[0].pharmPerBlock){
-    pharmPerBlock = new BigNumber(farms[0].pharmPerBlock).div(new BigNumber(10).pow(18)).toNumber();
+  let pharmPerBlock = 0
+  if (farms && farms[0] && farms[0].pharmPerBlock) {
+    pharmPerBlock = new BigNumber(farms[0].pharmPerBlock).div(new BigNumber(10).pow(18)).toNumber()
   }
 
   return (
@@ -63,7 +63,9 @@ const CakeStats = () => {
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(540, 'New EGG/block')}</Text>
-          <Text bold fontSize="14px">{pharmPerBlock}</Text>
+          <Text bold fontSize="14px">
+            {pharmPerBlock}
+          </Text>
         </Row>
       </CardBody>
     </StyledCakeStats>
